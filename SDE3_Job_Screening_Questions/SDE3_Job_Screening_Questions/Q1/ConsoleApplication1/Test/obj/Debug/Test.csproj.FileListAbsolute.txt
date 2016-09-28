@@ -1,9 +1,0 @@
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\Test.dll
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\Test.pdb
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\ConsoleApplication1.exe
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\nunit.framework.dll
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\ConsoleApplication1.pdb
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\bin\Debug\nunit.framework.xml
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\obj\Debug\Test.dll
-C:\Users\Fits\documents\visual studio 2013\Projects\InterviewTestCode\ConsoleApplication1\Test\obj\Debug\Test.pdb
