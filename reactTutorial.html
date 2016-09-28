@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>thenewboston</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div id="content"></div>
+    <script type="text/jsx">
+        var CommentBoard = React.createClass({
+        getInitialState: function(){
+        return {comments:[
+        'Brook is a student ',
+        'Fitsum is a Software Engineer',
+        'Yonu  is a dentist',
+        "There was a group of women gathered at a seminar on how to live in a loving relationship with your husband. "+
+        "The women were asked, 'How many of you love your husbands?'                                                 "+
+        "All the women raised their hands.                                                                           "+
+        "Then they were asked, 'When was the last time you told your husband you loved him?'                         "+
+        "Some women answered today, some yesterday, some didn't remember..                                           "+
+        "The women were then told to take their cell phones and send the following text to their respective husband: I love you, sweetheart. "+
+        "Then the women were told to exchange phones and read the responding text messages.                                                  "+
+        "Here are some of the replies:                                                                                                       "+
+        "1. Eh, mother of my children, are you sick?                                                                                         "+
+        "2. What now? Did you crash the car again?                                                                                           "+
+        "3. I don't understand what you mean?                                                                                                "+
+        "4. What did you do now? I won't forgive you this time!!!                                                                            "+
+        "5. ?!?                                                                                                                              "+
+        "6. Don't beat about the bush, just tell me how much you need?                                                                       "+
+        "7. Am I dreaming? ???????                                                                                                           "+
+        "8. If you don't tell me who this message is actually for, you will die today...!!!                                                  "+
+        "9. I asked you not to drink anymore!!                                                                                               "+
+        "and the best one                                                                                                                    "+
+        "10. Who is this?"
+
+
+        ]}
+        },
+
+        addComment: function (){
+        var array=this.state.comments;
+        array.push('new Comment');
+        this.setState({comments:array});
+        return (this.state.comments);
+        },
+        removeComment: function (index){
+        var array=this.state.comments;
+        array.splice(index, 1);
+        this.setState({comments:array});
+        return (this.state.comments);
+        },
+        updateComment: function(newText,index){
+        var array=this.state.comments;
+        array[index]=newText
+        this.setState({comments:array});
+        return (this.state.comments);
+        },
+
+        eachComment: function (text, i) {
+        return (   
+            <Comment deleteComment={this.removeComment} updateComment={this.updateComment} key={i} index={i}>{text}</Comment>
+         );             
+        },
+
+        render: function() {
+        return(
+        <div>
+            <button className="btn btn-primary" onClick={this.addComment}>Add</button>
+            <hr />
+            <div>
+                {this.state.comments.map(this.eachComment)}
+            </div>
+         </div>);
+    }
+
+    });
+
+
+
+    var Comment = React.createClass({
+    getInitialState: function(){
+    return {Editing:false, value: this.props.children};
+    },
+
+    EditForm: function () {
+    return (
+    <div>
+        <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" />
+        <button className="btn btn-primary" onClick={this.Save}>Save</button>
+    </div>
+    );
+    },
+
+    handleChange: function(event) {
+    this.setState({value: event.target.value});
+    },
+
+    DefaultForm: function () {
+    return (
+    <div>
+
+        <div className="form-control">{this.props.children}</div>
+        <button className="btn btn-primary" onClick={this.Edit}>Edit</button>
+        <button className="btn btn-danger" onClick={this.Remove}>Remove</button>
+        <hr />
+    </div>
+    );
+    },
+
+    Edit: function() {
+    this.setState({Editing:true});
+    console.log("Editing the Comment" + this.props.children);
+
+    },
+
+    Remove: function() {
+    console.log("Removing the Comment? " + this.props.children);
+    return (this.props.deleteComment(this.props.index));
+    },
+
+    Save: function() {
+    this.setState({Editing:false});
+    var val=this.state.value
+    return (this.props.updateComment(val,this.props.index));
+
+    },
+
+    render: function() {
+    if(this.state.Editing){
+    return this.EditForm();
+    }
+    else{
+    return this.DefaultForm();
+    }
+    }
+    });
+
+
+
+    React.render(
+    <div className="main col-xs-6">
+        <br />
+        <center>Note book</center>
+        <CommentBoard />
+    </div>, document.getElementById('content'));
+
+</script>
+
+ 
+  
+</body>
+</html>
